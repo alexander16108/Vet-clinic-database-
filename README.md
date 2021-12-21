@@ -4,8 +4,8 @@
 > Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
 
 
-## ScreenShot
-![image](https://user-images.githubusercontent.com/60612329/146901974-9dd51c89-68b0-4ec3-ac9c-52b0c0c6d7a8.png)
+## ScreenShot 
+![image](https://user-images.githubusercontent.com/60612329/146994009-a1102dbc-6e08-40ae-98ad-23714aa75c9f.png)
 
 
 ## Getting Started
