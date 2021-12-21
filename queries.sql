@@ -1,4 +1,11 @@
 /*Queries that provide answers to the questions from all projects.*/
+SELECT * FROM animals;
+SELECT * FROM owners;
+SELECT * FROM vets;
+SELECT * FROM visits;
+SELECT * FROM specializations;
+SELECT * FROM species;
+
 
 SELECT * FROM animals WHERE full_name LIKE '%mon%';
 
@@ -77,7 +84,7 @@ GROUP BY date_of_birth;
 --What animals belong to Melody Pond?
 SELECT animal_name
 FROM animals
-JOIN owners ON animals.owner_id = owners.owner_id
+JOIN owners ON animals.owner_id = owners.id
 WHERE full_name = 'Melody Pond';
 --List of all animals that are pokemon (their type is Pokemon).
 SELECT animal_species_id, animal_name
@@ -150,30 +157,30 @@ WHERE vets.name = 'Maisy Smith'
 ORDER BY date_of_visit LIMIT 1;
 -- Details for most recent visit: animal information, vet information, and date of visit.
 SELECT
-  animals.name,
+  animals.animal_name,
   animals.date_of_birth,
   animals.escape_attempts,
   animals.neutered,
   animals.weight_kg,
-  vets.name,
-  vets.age,
-  vets.date_of_graduation,
+  vets.vet_name,
+  vets.vet_age,
+  vets.vet_graduation_date,
   visits.date_of_visit
 FROM visits
-JOIN animals ON animals_id = animals.id
-JOIN vets ON vets_id = vets.id
+JOIN animals ON visits.animals_id = animals.id
+JOIN vets ON vet_id = vets.id
 ORDER BY date_of_visit DESC LIMIT 1;
 -- How many visits were with a vet that did not specialize in that animal's species?
-SELECT vets.name, COUNT(date_of_visit)
+SELECT vets.vet_name, COUNT(date_of_visit)
 FROM vets
 LEFT JOIN visits
-ON vets.id = visits.vets_id
+ON vets.id = visits.vet_id
 LEFT JOIN specializations
 ON vets.id = specializations.vet_id
 WHERE specializations.species_id IS NULL
-GROUP BY vets.name;
+GROUP BY vets.vet_name;
 -- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
-SELECT species.name, COUNT(species.name)
+SELECT species.name_of_species, COUNT(species.name_of_species)
 FROM visits
 JOIN animals ON animals_id = animals.id
 JOIN vets ON vets_id = vets.id

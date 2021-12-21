@@ -17,9 +17,6 @@ INSERT INTO species (name_of_species) VALUES ('Digamon'), ('Pikachu');
 
 -- INSERT INTO ANIMALS TABLE
 
-ALTER TABLE animals DROP COLUMN full_name;
-
-
 INSERT INTO animals (animal_name, date_of_birth, escape_attempts, neutered, weight_kg, species_id, owner_id)
 VALUES
   ('Agumon', '2020-2-3', 0, true, 10.23, 2, 1),
@@ -80,3 +77,4 @@ VALUES
 ;
 
 COMMIT;
+
